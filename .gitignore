@@ -1,4 +1,7 @@
 
 # Project
-/build/*
-!/build/.gitkeep
+/build/ui/*
+!/build/ui/.gitkeep
+
+/build/app/*
+!/build/app/.gitkeep

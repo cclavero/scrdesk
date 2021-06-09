@@ -46,7 +46,7 @@ $ npm run build
 - https://dev.to/codehakase/building-a-web-app-with-go-gin-and-react-5ke
 - https://github.com/codehakase/golang-gin
 
-$ npm run build && mv build ../build/dist
+$ npm run build && mv build ../build/ui/dist
 
 $ cd ../app
 $ go mod init github.com/cclavero/scrdesk/app
@@ -55,7 +55,13 @@ $ go run main.go
 
 3. Clean Go (09-06-2021)
 
-4. Reject 'create-react-app' (09-06-2021)
+4. Makefile (09-06-2021)
 
-$ cd ui
-$ npm run eject
+- https://create-react-app.dev/docs/getting-started/
+
+$ make run
+
+5. Update 'ui' (09-06-2021)
+
+$ npm i jest-junit
+
