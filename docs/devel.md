@@ -57,4 +57,5 @@ $ go run main.go
 
 4. Reject 'create-react-app' (09-06-2021)
 
-
+$ cd ui
+$ npm run eject
