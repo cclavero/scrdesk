@@ -7,10 +7,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type Response struct {
-	Message string `json:"message"`
-}
-
 func main() {
 	// Set the router as the default one shipped with Gin
 	router := gin.Default()
