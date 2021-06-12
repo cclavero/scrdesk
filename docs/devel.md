@@ -61,7 +61,36 @@ $ go run main.go
 
 $ make run
 
-5. Update 'ui' (09-06-2021)
+5. ui: Update (09-06-2021)
 
 $ npm i jest-junit
 
+6. ui: Clean & React Bootstrap with Material Design (12-06-2021)
+
+- https://www.npmjs.com/package/mdbreact/v/5.0.1
+- https://mdbootstrap.com/docs/react/getting-started/installation/
+- https://stackoverflow.com/questions/43636667/unmet-peer-dependency-with-react
+
+$ make run-ui
+
+$ npm install mdbreact@5.0.1
+$ npm run clean
+$ npm run check
+$ npm ls react
+
+
+
+
+
+
+
+
+
+--- TEMPORAL
+
+6. ui: Update (11-06-2021)
+
+- https://www.npmjs.com/package/react-keyed-file-browser
+
+$ npm install react-keyed-file-browser
+$ npm install moment

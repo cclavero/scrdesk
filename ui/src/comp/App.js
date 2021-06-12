@@ -1,17 +1,59 @@
-import logo from '../asset/img/app-logo.svg';
+// Imports
+import React, { Component } from 'react';
+import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 
-import './App.css';
+// Components
+import Header from './header/Header';
+import Sidebar from './sidebar/Sidebar';
+import ContMain from './cont/Main';
+import Footer from './footer/Footer';
 
+// Resources
+//import './App.css';
+
+// Component
+class App extends Component {
+
+  render() {
+    return (
+      <MDBContainer fluid>
+        <MDBRow>
+          <MDBCol size="12">
+            <Header />
+          </MDBCol>  
+        </MDBRow>
+        <MDBRow>
+          <MDBCol size="2">
+            <Sidebar />
+          </MDBCol>
+          <MDBCol size="10">
+            <ContMain />
+          </MDBCol>
+        </MDBRow>
+        <MDBRow>
+          <MDBCol size="12">
+            <Footer />
+          </MDBCol>
+        </MDBRow>  
+      </MDBContainer>
+    );
+  };  
+
+};
+
+/*
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Edit <code>src/App.js</code> and save to reload.</p>
-        <a href="https://reactjs.org" target="_blank" className="App-link" rel="noopener noreferrer">Learn React</a>
-      </header>
+      <Header />
+
+
+      <Footer />
     </div>
   );
 }
+*/
+
+
 
 export default App;

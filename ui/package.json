@@ -7,16 +7,19 @@
     "npm": "6.14.13"
   },
   "scripts": {
+    "clean": "npm cache clean --force && rm -rf ./node_modules && npm install",
+    "check": "npm install -g npm-check && npm-check",
     "test": "CI=true JEST_JUNIT_OUTPUT_DIR=../build/ui react-scripts test --watchAll=false --reporters=jest-junit --coverage",
     "build": "react-scripts build",
     "start": "react-scripts start",
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "1.1.2",
+    "mdbreact": "5.0.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.13.0",

@@ -13,3 +13,7 @@ run:
 		mv build ../build/ui/dist;
 	cd app && \
 		go run main.go;
+
+run-ui:
+	cd ui && \
+		npm start;
