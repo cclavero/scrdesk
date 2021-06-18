@@ -94,3 +94,7 @@ $ npm ls react
 
 $ npm install react-keyed-file-browser
 $ npm install moment
+
+
+
+https://medium.com/bb-tutorials-and-thoughts/react-how-to-proxy-to-backend-server-5588a9e0347
