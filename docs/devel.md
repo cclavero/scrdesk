@@ -78,6 +78,13 @@ $ npm run clean
 $ npm run check
 $ npm ls react
 
+7. ui: Consume Go API + setState (18-06-2021)
+
+- https://medium.com/bb-tutorials-and-thoughts/react-how-to-proxy-to-backend-server-5588a9e0347
+- https://reactjs.org/docs/react-component.html
+- https://www.freecodecamp.org/news/get-pro-with-react-setstate-in-10-minutes-d38251d1c781/
+
+
 
 
 
@@ -97,4 +104,3 @@ $ npm install moment
 
 
 
-https://medium.com/bb-tutorials-and-thoughts/react-how-to-proxy-to-backend-server-5588a9e0347
