@@ -5,3 +5,5 @@
 
 /build/app/*
 !/build/app/.gitkeep
+
+/app/ui

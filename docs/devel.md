@@ -6,12 +6,12 @@
 
 - https://github.com/nvm-sh/nvm
 
-$ nvm install v14.17.0
-$ nvm use v14.17.0
+$ nvm install v14.17.1
+$ nvm use v14.17.1
 $ nvm version
-v14.17.0
+v14.17.1
 $ node --version
-v14.17.0
+v14.17.1
 $ npm --version
 6.14.13
 $ npx --version
@@ -84,23 +84,35 @@ $ npm ls react
 - https://reactjs.org/docs/react-component.html
 - https://www.freecodecamp.org/news/get-pro-with-react-setstate-in-10-minutes-d38251d1c781/
 
+8. all: Update Makefile with all the targets (20-06-2021)
 
+$ make
 
+ Project tasks:
 
-
-
-
-
-
-
---- TEMPORAL
-
-6. ui: Update (11-06-2021)
-
-- https://www.npmjs.com/package/react-keyed-file-browser
-
-$ npm install react-keyed-file-browser
-$ npm install moment
+	 # Help task --------------------------------------------------
+	 help			Print project tasks help
+	
+	 # UI tasks ---------------------------------------------------
+	 test-ui		Execute all tests for UI
+	 build-ui		Build UI for prod
+	 ci-ui			CI for UI
+	 run-ui			Run UI in dev mode
+	
+	 # App tasks --------------------------------------------------
+	 test-app		Execute all tests for App
+	 lint-app		Execute lint task for App
+	 build-app		Build App
+	 ci-app			CI for App
+	
+	 # Global tasks -----------------------------------------------
+	 ci			CI for UI & App
+	 run			Build UI and run App in dev mode
+	
+	 # Docker tasks -----------------------------------------------
+	 docker-build 		Build App docker image
+	 docker-start		Start the App docker container
+	 docker-stop		Stop the App docker container
 
 
 

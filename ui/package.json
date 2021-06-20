@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "14.17.0",
+    "node": "14.17.1",
     "npm": "6.14.13"
   },
   "scripts": {
     "clean": "npm cache clean --force && rm -rf ./node_modules && npm install",
     "check": "npm install -g npm-check && npm-check",
-    "test": "CI=true JEST_JUNIT_OUTPUT_DIR=../build/ui react-scripts test --watchAll=false --reporters=jest-junit --coverage",
+    "test": "CI=true JEST_JUNIT_OUTPUT_DIR=../build/ui/report react-scripts test --watchAll=false --testResultsProcessor=\"jest-junit\" --coverage",
     "build": "react-scripts build",
     "start": "react-scripts start",
     "eject": "react-scripts eject"

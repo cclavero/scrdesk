@@ -17,7 +17,7 @@ func main() {
 	// Set the router as the default one shipped with Gin
 	router := gin.Default()
 	// Serve the frontend
-	router.Use(static.Serve("/", static.LocalFile("../build/ui/dist", true)))
+	router.Use(static.Serve("/", static.LocalFile("./ui", true)))
 	// API
 	api := router.Group("/api")
 	{
@@ -34,5 +34,7 @@ func main() {
 		})
 	}
 	// Start the app
-	router.Run(":8000")
+	if err := router.Run(":8000"); err != nil {
+		panic(err)
+	}
 }
