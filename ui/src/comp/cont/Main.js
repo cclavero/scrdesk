@@ -54,6 +54,7 @@ class ContMain extends Component {
           ))}
           </MDBTableBody>
         </MDBTable>
+        
       </Fragment>
     );
   };
