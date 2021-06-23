@@ -28,14 +28,11 @@ RUN GO111MODULE=on CGO_ENABLED=0 GOOS=linux GOARCH=amd64 && \
 
 # Build image
 
-# TEMPORAL
-#FROM scratch
-FROM alpine:latest  
+FROM alpine:3.14.0
 
-RUN apk --no-cache add ca-certificates
-#COPY --from=app-builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+RUN apk add --no-cache ca-certificates libc6-compat;
 
-WORKDIR /root
+WORKDIR /scrdesk
 
 COPY --from=ui-builder /usr/src/ui/build ./ui/
 COPY --from=app-builder /go/src/github.com/cclavero/scrdesk/app/app .

@@ -148,10 +148,11 @@ docker-build:
 		--rm --tag scrdesk-app:$(APP_VERSION) .;
 
 ## docker-start		Start the App docker container
+# Exec: docker run -it --name scrdesk-app-local --rm scrdesk-app:1.0-beta /bin/bash
 docker-start:
 	@echo "\n> Start App docker container\n";
 
-	docker run -it -p 8000:8000 --rm --name scrdesk-app-local scrdesk-app:$(APP_VERSION);
+	docker run -d -p 8000:8000 --rm --name scrdesk-app-local scrdesk-app:$(APP_VERSION);
 
 ## docker-stop		Stop the App docker container
 docker-stop:
