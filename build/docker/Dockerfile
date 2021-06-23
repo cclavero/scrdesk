@@ -24,7 +24,7 @@ COPY app/. ./
 
 RUN GO111MODULE=on CGO_ENABLED=0 GOOS=linux GOARCH=amd64 && \
     go mod download -x && \
-    go build -a -installsuffix cgo -v -ldflags "-extldflags '-static' -w -s -X main.version=${APP_VERSION}" -o app main.go;
+    go build -a -installsuffix cgo -v -ldflags "-extldflags '-static' -w -s -X main.Version=${APP_VERSION}" -o app main.go;
 
 # Build image
 

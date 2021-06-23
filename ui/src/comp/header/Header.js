@@ -20,7 +20,7 @@ class Header extends Component {
       <Router>
         <MDBNavbar color="default-color" dark expand="md">
           <MDBNavbarBrand>
-            <strong className="white-text">ScoresDesk</strong>
+            <strong className="white-text">ScoresDesk - ver. {this.props.appConfig.version}</strong>
           </MDBNavbarBrand>
           <MDBNavbarToggler onClick={this.toggleCollapse} />
           <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>

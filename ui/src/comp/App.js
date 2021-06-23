@@ -9,17 +9,39 @@ import ContMain from './cont/Main';
 import Footer from './footer/Footer';
 
 // Resources
-//import './App.css';
+import './App.css';
 
 // Component
 class App extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {config: {}, error: null};
+  };
+
+  componentDidMount() {
+    fetch("/app/config")
+      .then(response => response.json())
+      .then(
+        (json) => {
+          this.setState({config: json.config});
+        },
+        (error) => {
+          this.setState({error: error.message});
+        }
+      )
+  };
+
   render() {
+
+    const { config, error } = this.state;
+
     return (
       <MDBContainer fluid>
         <MDBRow>
           <MDBCol size="12">
-            <Header />
+            <Header appConfig={config} />
           </MDBCol>  
         </MDBRow>
         <MDBRow>

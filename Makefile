@@ -134,7 +134,7 @@ run: build-ui
 	cd app && \
 		rm -rf ../$(build_app_path)/bin/ui && \
 		cp -rf ui ../$(build_app_path)/bin/ui && \
-		go run main.go;
+		go run -ldflags="-X main.Version=$(APP_VERSION)" main.go;
 
 ##
 ## # Docker tasks -----------------------------------------------

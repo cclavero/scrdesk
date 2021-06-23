@@ -1,40 +1,42 @@
 package main
 
 import (
-	"net/http"
+	"fmt"
 
-	"github.com/gin-gonic/contrib/static"
+	"github.com/cclavero/scrdesk/app/api"
+	"github.com/cclavero/scrdesk/app/config"
 	"github.com/gin-gonic/gin"
 )
 
-// TEMPORAL
-type Score struct {
-	Id    int    `json:"id"`
-	Score string `json:"score"`
-}
+// Global constants
+const (
+	HttpPort = "8000"
+)
 
+// Global vars
+var (
+	Version = ""
+)
+
+// Main entry point
 func main() {
-	// Set the router as the default one shipped with Gin
-	router := gin.Default()
-	// Serve the frontend
-	router.Use(static.Serve("/", static.LocalFile("./ui", true)))
-	// API
-	api := router.Group("/api")
-	{
-		api.GET("/score", func(c *gin.Context) {
+	var appConfig *config.AppConfig
+	var ginEngine *gin.Engine
+	var err error
 
-			// TEMPORAL
-			items := []Score{
-				{Id: 1, Score: "Score 1"},
-				{Id: 2, Score: "Score 2"},
-				{Id: 3, Score: "Score 3"},
-				{Id: 4, Score: "Score 4"},
-			}
-			c.JSON(http.StatusOK, gin.H{"items": items})
-		})
+	if appConfig, err = config.NewAppConfig(Version); err != nil {
+		panic(err)
 	}
+
+	// TEMPORAL:LOG
+	fmt.Printf("\n\nScrdesk app: ver. %s\n\n", appConfig.Version)
+
+	if ginEngine, err = api.InitRoutes(appConfig); err != nil {
+		panic(err)
+	}
+
 	// Start the app
-	if err := router.Run(":8000"); err != nil {
+	if err = ginEngine.Run(":" + HttpPort); err != nil {
 		panic(err)
 	}
 }
