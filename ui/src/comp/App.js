@@ -35,7 +35,7 @@ class App extends Component {
 
   render() {
 
-    const { config, error } = this.state;
+    const { config } = this.state;
 
     return (
       <MDBContainer fluid>
@@ -44,7 +44,7 @@ class App extends Component {
             <Header appConfig={config} />
           </MDBCol>  
         </MDBRow>
-        <MDBRow>
+        <MDBRow style={{paddingTop: "80px",paddingBottom: "40px"}}>
           <MDBCol size="2">
             <Sidebar />
           </MDBCol>
@@ -56,7 +56,7 @@ class App extends Component {
           <MDBCol size="12">
             <Footer />
           </MDBCol>
-        </MDBRow>  
+        </MDBRow>
       </MDBContainer>
     );
   };  
