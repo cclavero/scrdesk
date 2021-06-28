@@ -114,10 +114,12 @@ $ make
 	 docker-start		Start the App docker container
 	 docker-stop		Stop the App docker container
 
-9. ui + app: Print app version (23/06/2021)
+9. ui + app: Print app version (23-06-2021)
 
 - https://semaphoreci.com/community/tutorials/building-go-web-applications-and-microservices-using-gin
 - https://www.calhoun.io/using-the-service-object-pattern-in-go/
 
+10. ui + app: UI api service + Login form (26-06-2021)
 
+$ curl -vvv -X POST -H "Content-Type: application/json" -d '{"username":"admin","password":"admin"}' http://localhost:8000/app/login
 

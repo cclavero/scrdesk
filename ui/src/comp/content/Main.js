@@ -1,12 +1,16 @@
 // Imports
 import React, { Component, Fragment } from 'react';
-import { MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdbreact';
+import { MDBAlert, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdbreact';
+
+import APIService from '../../service/api';
 
 // Component
 class ContMain extends Component {
 
   constructor(props) {
     super(props);
+
+    this.apiSer = new APIService();
 
     this.state = {data: [], error: null};
   };
@@ -15,16 +19,15 @@ class ContMain extends Component {
 
     this.setState({data: [], error: null});
 
-    fetch('/api/score')
-      .then(response => response.json())
-      .then(
-        (json) => {
-          this.setState({data: json.items});
-        },
-        (error) => {
-          this.setState({error: error.message});
+    this.apiSer.get('/api/score')
+      .then((result) => {
+        if (result.error != null) {
+          this.setState({error: result.error});
+        } else {
+          this.setState({data: result.data});
         }
-      );
+      });
+
   };
 
   render() {
@@ -34,7 +37,10 @@ class ContMain extends Component {
     return (
       <Fragment>
 
-        <div>{error}</div>
+        {error != null
+          ? <MDBAlert color="danger" dismiss><strong>{error}</strong></MDBAlert>
+          : <div></div>
+        }
 
         <MDBBtn onClick={() => this.getScores()} color="primary">Get scores</MDBBtn>
 

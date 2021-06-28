@@ -42,7 +42,7 @@ build-ui:
 
 	cd ui && \
 		mkdir -p ../$(build_ui_dist_path) && \
-		rm -rf ../$(build_ui_dist_path) && \
+		rm -rf ../$(build_ui_path)/.has-build-error ../$(build_ui_dist_path) && \
 		npm run build || touch ../$(build_ui_path)/.has-build-error;
 
 	cd ui && \

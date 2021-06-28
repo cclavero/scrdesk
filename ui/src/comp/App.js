@@ -3,10 +3,13 @@ import React, { Component } from 'react';
 import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 
 // Components
+import Login from './login/Login';
 import Header from './header/Header';
 import Sidebar from './sidebar/Sidebar';
-import ContMain from './cont/Main';
+import ContMain from './content/Main';
 import Footer from './footer/Footer';
+
+import APIService from '../service/api';
 
 // Resources
 import './App.css';
@@ -17,33 +20,43 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {config: {}, error: null};
+    this.apiSer = new APIService();
+
+    this.state = {appConfig: {}, userProfile: null, error: null};
   };
 
   componentDidMount() {
-    fetch("/app/config")
-      .then(response => response.json())
-      .then(
-        (json) => {
-          this.setState({config: json.config});
-        },
-        (error) => {
-          this.setState({error: error.message});
+    this.apiSer.get('/app/config')
+      .then((result) => {
+        if (result.error != null) {
+          this.setState({error: result.error});
+        } else {
+          this.setState({appConfig: result.data});
         }
-      )
+      });
   };
 
   render() {
 
-    const { config } = this.state;
+    const { appConfig, userProfile } = this.state;
+
+    // TEMPORAL
+    /*
+    if (userProfile == null) {
+      return (
+        <Login />
+      )
+    }
+    */
 
     return (
       <MDBContainer fluid>
         <MDBRow>
           <MDBCol size="12">
-            <Header appConfig={config} />
+            <Header appConfig={appConfig} />
           </MDBCol>  
         </MDBRow>
+        {/* // TEMPORAL */}
         <MDBRow style={{paddingTop: "80px",paddingBottom: "40px"}}>
           <MDBCol size="2">
             <Sidebar />
