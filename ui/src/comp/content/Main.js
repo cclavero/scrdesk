@@ -15,21 +15,6 @@ class ContMain extends Component {
     this.state = {data: [], error: null};
   };
 
-  getScores = () => {
-
-    this.setState({data: [], error: null});
-
-    this.apiSer.get('/api/score')
-      .then((result) => {
-        if (result.error != null) {
-          this.setState({error: result.error});
-        } else {
-          this.setState({data: result.data});
-        }
-      });
-
-  };
-
   render() {
 
     const { data, error } = this.state;
@@ -95,21 +80,26 @@ class ContMain extends Component {
           qué dise usteer qué dise usteer te va a hasé pupitaa ese que llega. No te digo trigo por no llamarte Rodrigor hasta luego Lucas 
           se calle ustée mamaar llevame al sircoo qué dise usteer ese pedazo de quietooor.
         </div>
-
-        <p></p>
-
-        <div>
-          Lorem fistrum quietooor qué dise usteer diodenoo la caidita diodenoo torpedo a gramenawer pecador. 
-          Tiene musho peligro amatomaa llevame al sircoo no te digo trigo por no llamarte Rodrigor. Benemeritaar condemor apetecan pupita. 
-          A wan a gramenawer se calle ustée fistro te voy a borrar el cerito condemor tiene musho peligro apetecan. 
-          Está la cosa muy malar qué dise usteer tiene musho peligro de la pradera no puedor amatomaa se calle ustée de la pradera ese 
-          que llega la caidita. Ese que llega sexuarl sexuarl se calle ustée está la cosa muy malar. Papaar papaar fistro va usté muy 
-          cargadoo ahorarr ese que llega a wan de la pradera quietooor de la pradera. Te va a hasé pupitaa caballo blanco caballo negroorl 
-          me cago en tus muelas hasta luego Lucas. Pecador al ataquerl quietooor la caidita mamaar ahorarr.
-        </div>
         
       </Fragment>
     );
+  };
+
+  // Internal methods ----------------------------------------------------------------
+
+  getScores = () => {
+
+    this.setState({data: [], error: null});
+
+    this.apiSer.get('/api/score')
+      .then((result) => {
+        if (result.error != null) {
+          this.setState({error: result.error});
+        } else {
+          this.setState({data: result.data});
+        }
+      });
+
   };
 
 }

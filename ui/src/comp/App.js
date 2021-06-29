@@ -10,6 +10,7 @@ import ContMain from './content/Main';
 import Footer from './footer/Footer';
 
 import APIService from '../service/api';
+import StorageService from '../service/storage';
 
 // Resources
 import './App.css';
@@ -21,6 +22,7 @@ class App extends Component {
     super(props);
 
     this.apiSer = new APIService();
+    this.storageSer = new StorageService();
 
     this.state = {appConfig: {}, userProfile: null, error: null};
   };
@@ -34,34 +36,41 @@ class App extends Component {
           this.setState({appConfig: result.data});
         }
       });
+    const userProfile = this.storageSer.get('userProfile');
+    if (userProfile != null) {
+      this.setState({userProfile: userProfile});
+    }
   };
 
   render() {
 
     const { appConfig, userProfile } = this.state;
 
-    // TEMPORAL
-    /*
     if (userProfile == null) {
       return (
-        <Login />
+        <Login loginCallback={this.loginCallback} />
       )
     }
-    */
 
     return (
       <MDBContainer fluid>
         <MDBRow>
           <MDBCol size="12">
-            <Header appConfig={appConfig} />
+            <Header appConfig={appConfig} logoutCallback={this.logoutCallback} />
           </MDBCol>  
         </MDBRow>
+
         {/* // TEMPORAL */}
         <MDBRow style={{paddingTop: "80px",paddingBottom: "40px"}}>
           <MDBCol size="2">
             <Sidebar />
           </MDBCol>
           <MDBCol size="10">
+
+            {/* TEMPORAL */}
+            <div>Name: {userProfile.name}</div>
+            <div>Token: {userProfile.token}</div>
+
             <ContMain />
           </MDBCol>
         </MDBRow>
@@ -73,6 +82,18 @@ class App extends Component {
       </MDBContainer>
     );
   };  
+
+  // Internal methods ----------------------------------------------------------------
+
+  loginCallback = (userProfile) => {
+    this.setState({userProfile: userProfile});
+    this.storageSer.put('userProfile', userProfile);
+  };
+
+  logoutCallback = () => {
+    this.setState({userProfile: null});
+    this.storageSer.clear();
+  };
 
 };
 

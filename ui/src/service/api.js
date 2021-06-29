@@ -1,12 +1,7 @@
 
 class APIService {
 
-    /*
-    constructor() {
-    }
-    */
-
-    getInvConfig = (httpMethod) => {
+    getInvConfig = (httpMethod, data) => {
         const invConfig =  {
             method: httpMethod,
             headers: {
@@ -14,17 +9,9 @@ class APIService {
                 'Content-Type': 'application/json',
             }
         };
-
-        // TODO: POST, PUT, DELETE
-        /*
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({a: 1, b: 'Textual content'})
-        */
-
+        if (httpMethod === 'POST' || httpMethod === 'PUT') {
+            invConfig.body = JSON.stringify(data);
+        } /* else if {} */
         return invConfig;
     };
 
@@ -54,6 +41,13 @@ class APIService {
         // TODO: URL PARAMS
 
         return this.invoke(url, this.getInvConfig('GET'));
+    };
+
+    post = (url, urlParams, data) => {
+
+        // TODO: URL PARAMS
+
+        return this.invoke(url, this.getInvConfig('POST', data))
     };
 
 }

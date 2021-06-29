@@ -121,5 +121,8 @@ $ make
 
 10. ui + app: UI api service + Login form (26-06-2021)
 
+- https://www.pluralsight.com/guides/how-to-pass-data-between-react-components
+- https://www.robinwieruch.de/local-storage-react
+
 $ curl -vvv -X POST -H "Content-Type: application/json" -d '{"username":"admin","password":"admin"}' http://localhost:8000/app/login
 

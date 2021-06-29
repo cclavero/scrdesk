@@ -1,9 +1,8 @@
 // Imports
 import React, { Component } from 'react';
-import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn, MDBAlert } from 'mdbreact';
 
-// Resources
-import './Login.css';
+import APIService from '../../service/api';
 
 // Component
 class Login extends Component {
@@ -11,40 +10,18 @@ class Login extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {username: '', password: ''};
-  };
+    this.apiSer = new APIService();
 
-  registerFormData = (field, value) => {
-    this.setState({[field]: value});
-  }  
-
-  onFormSubmit = (ev) => {
-    ev.preventDefault();
-    const { username, password } = this.state;
-
-    // TODO:VALIDATIONS
-
-    const userCredsJSON = JSON.stringify({username: username, password: password});
-    fetch("/app/login", {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: "POST",
-      body: userCredsJSON
-    })
-      .then(function(res){ console.log(res) })
-      .catch(function(res){ console.log(res) })
-
-    console.log(userCredsJSON);
-    
-
+    this.state = {message: null, username: '', password: ''};
   };
 
   render() {
+
+    const { message } = this.state;
+
     return (
       <MDBContainer>
-        <MDBRow>
+        <MDBRow center style={{paddingTop: "80px"}}>
           <MDBCol md="6">
             <MDBCard>
               <div className="header pt-3 grey lighten-2">
@@ -53,10 +30,16 @@ class Login extends Component {
                 </MDBRow>
               </div>
               <MDBCardBody className="mx-4 mt-4">
+
+                {message != null
+                  ? <MDBAlert color="danger" dismiss><strong>{message}</strong></MDBAlert>
+                  : <div></div>
+                }
+
                 <form onSubmit={(ev) => this.onFormSubmit(ev)}>
-                  <MDBInput label="Username" icon="user" group type="text" 
+                  <MDBInput label="Username" icon="user" group type="text" value={this.state.username}
                     getValue={(value) => this.registerFormData("username", value)} />
-                  <MDBInput label="Password" icon="lock" group type="password"
+                  <MDBInput label="Password" icon="lock" group type="password" value={this.state.password}
                     getValue={(value) => this.registerFormData("password", value)} />
                   <div className="text-center">
                     <MDBBtn type="submit" color="primary">Submit</MDBBtn>
@@ -68,6 +51,34 @@ class Login extends Component {
         </MDBRow>
       </MDBContainer>
     );
+  };
+
+  // Internal methods ----------------------------------------------------------------
+
+  registerFormData = (field, value) => {
+    this.setState({[field]: value});
+  }  
+
+  onFormSubmit = (ev) => {
+    ev.preventDefault();
+
+    const { username, password } = this.state;
+    
+    this.setState({message: null});
+
+    // TODO: VALIDATION
+    if (username === '' || password === '') {
+      return;
+    }
+
+    this.apiSer.post('/app/login', null, {username: username, password: password})
+      .then((result) => {
+        if (result.error != null) {
+          this.setState({username: '', password: '', message: 'Bad username and/or password !!'});
+        } else {
+          this.props.loginCallback(result.data);
+        }  
+    });
   };
 
 }
