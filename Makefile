@@ -131,9 +131,7 @@ ci: ci-ui ci-app
 run: build-ui
 	@echo "\n> Run UI (prod) & App (dev)\n";
 
-	cd app && \
-		rm -rf ../$(build_app_path)/bin/ui && \
-		cp -rf ui ../$(build_app_path)/bin/ui && \
+	$(go_env) cd app && \
 		go run -ldflags="-X main.Version=$(APP_VERSION)" main.go;
 
 ##
