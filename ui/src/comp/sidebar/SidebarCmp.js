@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 
 // Component
-class Sidebar extends Component {
+export class SidebarCmp extends Component {
 
   render() {
     return (
@@ -11,5 +11,3 @@ class Sidebar extends Component {
   };
 
 }
-
-export default Sidebar;

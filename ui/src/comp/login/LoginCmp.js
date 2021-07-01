@@ -2,10 +2,10 @@
 import React, { Component } from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn, MDBAlert } from 'mdbreact';
 
-import APIService from '../../service/api';
+import { APIService } from '../../service/api';
 
 // Component
-class Login extends Component {
+export class LoginCmp extends Component {
 
   constructor(props) {
     super(props);
@@ -82,5 +82,3 @@ class Login extends Component {
   };
 
 }
-
-export default Login;

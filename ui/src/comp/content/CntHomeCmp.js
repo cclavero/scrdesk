@@ -2,10 +2,10 @@
 import React, { Component, Fragment } from 'react';
 import { MDBAlert, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdbreact';
 
-import APIService from '../../service/api';
+import { APIService } from '../../service/api';
 
 // Component
-class ContMain extends Component {
+export class CntHomeCmp extends Component {
 
   constructor(props) {
     super(props);
@@ -103,5 +103,3 @@ class ContMain extends Component {
   };
 
 }
-
-export default ContMain;

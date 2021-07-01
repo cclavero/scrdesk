@@ -4,20 +4,20 @@ import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // Components
-import Login from './login/Login';
-import Header from './header/Header';
-import Sidebar from './sidebar/Sidebar';
-import ContMain from './content/Main';
-import Footer from './footer/Footer';
+import { LoginCmp } from '../../comp/login/LoginCmp';
+import { HeaderCmp } from '../../comp/header/HeaderCmp';
+import { SidebarCmp } from '../../comp/sidebar/SidebarCmp';
+import { FooterCmp } from '../../comp/footer/FooterCmp';
+import { CntHomeCmp } from '../../comp/content/CntHomeCmp';
 
-import APIService from '../service/api';
-import StorageService from '../service/storage';
+import { APIService } from '../../service/api';
+import { StorageService } from '../../service/storage';
 
 // Resources
 import './AppPg.css';
 
 // Component
-class AppPg extends Component {
+export class AppPg extends Component {
 
   constructor(props) {
     super(props);
@@ -49,7 +49,7 @@ class AppPg extends Component {
 
     if (userProfile == null) {
       return (
-        <Login loginCallback={this.loginCallback} />
+        <LoginCmp loginCallback={this.loginCallback} />
       )
     }
 
@@ -60,14 +60,14 @@ class AppPg extends Component {
 
           <MDBRow>
             <MDBCol size="12">
-              <Header appConfig={appConfig} logoutCallback={this.logoutCallback} />
+              <HeaderCmp appConfig={appConfig} logoutCallback={this.logoutCallback} />
             </MDBCol>  
           </MDBRow>
 
           {/* // TEMPORAL */}
           <MDBRow style={{paddingTop: "80px",paddingBottom: "40px"}}>
             <MDBCol size="2">
-              <Sidebar />
+              <SidebarCmp />
             </MDBCol>
             <MDBCol size="10">
 
@@ -77,19 +77,22 @@ class AppPg extends Component {
 
               <Switch>
                 <Route path="/about">
-                  
+
+                  {/* TEMPORAL */}
+                  <h2>About</h2>
+
                 </Route>
                 <Route path="/">
-                  <ContMain />
+                  <CntHomeCmp />
                 </Route>
               </Switch> 
 
             </MDBCol>
           </MDBRow>
-            <h2>About</h2>
+            
           <MDBRow>
             <MDBCol size="12">
-              <Footer />
+              <FooterCmp />
             </MDBCol>
           </MDBRow>
 
@@ -104,13 +107,7 @@ class AppPg extends Component {
   loginCallback = (userProfile) => {
     this.setState({userProfile: userProfile});
     this.storageSer.put('userProfile', userProfile);
-
-    // TEMPORAL
-    //this.history.push("/");
-    //const history = useHistory();
-    //history.push("/");
-    window.history.pushState({page: "another"}, "another page", "http://google.com");
-
+    window.location.href = '/';
   };
 
   logoutCallback = () => {
@@ -119,5 +116,3 @@ class AppPg extends Component {
   };
 
 };
-
-export default AppPg;

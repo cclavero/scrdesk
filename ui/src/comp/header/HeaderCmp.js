@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarToggler, MDBCollapse, MDBNavbarNav, MDBNavItem, MDBNavLink } from 'mdbreact';
 
 // Resources
-import './Header.css';
+import './HeaderCmp.css';
 
 // Component
-class Header extends Component {
+export class HeaderCmp extends Component {
 
   constructor(props) {
     super(props);
@@ -19,7 +19,7 @@ class Header extends Component {
       <MDBNavbar color="elegant-color-dark" dark expand="md" scrolling fixed="top">
 
         <MDBNavbarBrand>
-          <h1 className="font-weight-bold white-text Header-title">ScoresDesk - ver. {this.props.appConfig.version}</h1>
+          <h1 className="font-weight-bold white-text HeaderCmp-title">ScoresDesk - ver. {this.props.appConfig.version}</h1>
         </MDBNavbarBrand>
 
         <MDBNavbarToggler onClick={() => this.toggleBurgerMenu()} />
@@ -55,5 +55,3 @@ class Header extends Component {
   };
 
 }
-
-export default Header;

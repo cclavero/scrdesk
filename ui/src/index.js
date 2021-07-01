@@ -1,7 +1,7 @@
 // Imports
 import React from 'react';
 import ReactDOM from 'react-dom';
-import reportWebVitals from './reportWebVitals';
+import { reportWebVitals } from './reportWebVitals';
 
 // MDB React
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -12,7 +12,7 @@ import 'mdbreact/dist/css/mdb.css';
 import './asset/css/index.css';
 
 // Main component
-import AppPg from './comp/AppPg';
+import { AppPg } from './page/app/AppPg';
 
 // Main
 ReactDOM.render(

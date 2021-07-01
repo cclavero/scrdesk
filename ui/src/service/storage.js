@@ -1,5 +1,5 @@
 
-class StorageService {
+export class StorageService {
 
     put = (id, obj) => {
         sessionStorage.setItem(id, JSON.stringify(obj));
@@ -18,5 +18,3 @@ class StorageService {
     };
 
 }
-
-export default StorageService;

@@ -1,5 +1,5 @@
 
-class APIService {
+export class APIService {
 
     getInvConfig = (httpMethod, data) => {
         const invConfig =  {
@@ -51,5 +51,3 @@ class APIService {
     };
 
 }
-
-export default APIService;
