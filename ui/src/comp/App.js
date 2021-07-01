@@ -1,6 +1,7 @@
 // Imports
 import React, { Component } from 'react';
 import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // Components
 import Login from './login/Login';
@@ -53,33 +54,48 @@ class App extends Component {
     }
 
     return (
-      <MDBContainer fluid>
-        <MDBRow>
-          <MDBCol size="12">
-            <Header appConfig={appConfig} logoutCallback={this.logoutCallback} />
-          </MDBCol>  
-        </MDBRow>
+      <Router>
 
-        {/* // TEMPORAL */}
-        <MDBRow style={{paddingTop: "80px",paddingBottom: "40px"}}>
-          <MDBCol size="2">
-            <Sidebar />
-          </MDBCol>
-          <MDBCol size="10">
+        <MDBContainer fluid>
 
-            {/* TEMPORAL */}
-            <div>Name: {userProfile.name}</div>
-            <div>Token: {userProfile.token}</div>
+          <MDBRow>
+            <MDBCol size="12">
+              <Header appConfig={appConfig} logoutCallback={this.logoutCallback} />
+            </MDBCol>  
+          </MDBRow>
 
-            <ContMain />
-          </MDBCol>
-        </MDBRow>
-        <MDBRow>
-          <MDBCol size="12">
-            <Footer />
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
+          {/* // TEMPORAL */}
+          <MDBRow style={{paddingTop: "80px",paddingBottom: "40px"}}>
+            <MDBCol size="2">
+              <Sidebar />
+            </MDBCol>
+            <MDBCol size="10">
+
+              {/* TEMPORAL */}
+              <div>Name: {userProfile.name}</div>
+              <div>Token: {userProfile.token}</div>
+
+              <Switch>
+                <Route path="/about">
+                  
+                </Route>
+                <Route path="/">
+                  <ContMain />
+                </Route>
+              </Switch> 
+
+            </MDBCol>
+          </MDBRow>
+            <h2>About</h2>
+          <MDBRow>
+            <MDBCol size="12">
+              <Footer />
+            </MDBCol>
+          </MDBRow>
+
+        </MDBContainer>
+
+      </Router>
     );
   };  
 

@@ -126,3 +126,11 @@ $ make
 
 $ curl -vvv -X POST -H "Content-Type: application/json" -d '{"username":"admin","password":"admin"}' http://localhost:8000/app/login
 
+11. ui: Routes (30-06-2021)
+
+- https://github.com/ReactTraining/react-router
+- https://reactrouter.com/web/guides/quick-start
+- https://mdbootstrap.com/docs/react/navigation/navbar/
+
+
+
