@@ -131,6 +131,8 @@ $ curl -vvv -X POST -H "Content-Type: application/json" -d '{"username":"admin",
 - https://github.com/ReactTraining/react-router
 - https://reactrouter.com/web/guides/quick-start
 - https://mdbootstrap.com/docs/react/navigation/navbar/
+- https://stackoverflow.com/questions/31079081/programmatically-navigate-using-react-router
+
 
 
 

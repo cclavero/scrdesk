@@ -14,10 +14,10 @@ import APIService from '../service/api';
 import StorageService from '../service/storage';
 
 // Resources
-import './App.css';
+import './AppPg.css';
 
 // Component
-class App extends Component {
+class AppPg extends Component {
 
   constructor(props) {
     super(props);
@@ -104,6 +104,13 @@ class App extends Component {
   loginCallback = (userProfile) => {
     this.setState({userProfile: userProfile});
     this.storageSer.put('userProfile', userProfile);
+
+    // TEMPORAL
+    //this.history.push("/");
+    //const history = useHistory();
+    //history.push("/");
+    window.history.pushState({page: "another"}, "another page", "http://google.com");
+
   };
 
   logoutCallback = () => {
@@ -113,4 +120,4 @@ class App extends Component {
 
 };
 
-export default App;
+export default AppPg;

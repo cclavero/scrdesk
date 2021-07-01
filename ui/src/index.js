@@ -12,12 +12,12 @@ import 'mdbreact/dist/css/mdb.css';
 import './asset/css/index.css';
 
 // Main component
-import App from './comp/App';
+import AppPg from './comp/AppPg';
 
 // Main
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppPg />
   </React.StrictMode>,
   document.getElementById('root')
 );
