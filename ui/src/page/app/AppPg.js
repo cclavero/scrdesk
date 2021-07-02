@@ -8,7 +8,9 @@ import { LoginCmp } from '../../comp/login/LoginCmp';
 import { HeaderCmp } from '../../comp/header/HeaderCmp';
 import { SidebarCmp } from '../../comp/sidebar/SidebarCmp';
 import { FooterCmp } from '../../comp/footer/FooterCmp';
+
 import { CntHomeCmp } from '../../comp/content/CntHomeCmp';
+import { CntUserCmp } from '../../comp/content/CntUserCmp';
 
 import { APIService } from '../../service/api';
 import { StorageService } from '../../service/storage';
@@ -63,24 +65,15 @@ export class AppPg extends Component {
               <HeaderCmp appConfig={appConfig} logoutCallback={this.logoutCallback} />
             </MDBCol>  
           </MDBRow>
-
-          {/* // TEMPORAL */}
           <MDBRow style={{paddingTop: "80px",paddingBottom: "40px"}}>
             <MDBCol size="2">
               <SidebarCmp />
             </MDBCol>
             <MDBCol size="10">
 
-              {/* TEMPORAL */}
-              <div>Name: {userProfile.name}</div>
-              <div>Token: {userProfile.token}</div>
-
               <Switch>
-                <Route path="/about">
-
-                  {/* TEMPORAL */}
-                  <h2>About</h2>
-
+                <Route path="/user">
+                  <CntUserCmp userProfile={userProfile} />
                 </Route>
                 <Route path="/">
                   <CntHomeCmp />

@@ -31,7 +31,7 @@ export class HeaderCmp extends Component {
               <MDBNavLink to="/">Home</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem active>
-              <MDBNavLink to="/about">About</MDBNavLink>
+              <MDBNavLink to="/user">User</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem active>
               <MDBNavLink to="#" onClick={() => this.logout()}>Logout</MDBNavLink>

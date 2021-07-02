@@ -22,6 +22,8 @@ export class CntHomeCmp extends Component {
     return (
       <Fragment>
 
+        <h2>Home</h2>
+
         {error != null
           ? <MDBAlert color="danger" dismiss><strong>{error}</strong></MDBAlert>
           : <div></div>
