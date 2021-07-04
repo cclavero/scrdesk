@@ -12,9 +12,6 @@ import { FooterCmp } from '../../comp/footer/FooterCmp';
 import { CntHomeCmp } from '../../comp/content/CntHomeCmp';
 import { CntUserCmp } from '../../comp/content/CntUserCmp';
 
-import { APIService } from '../../service/api';
-import { StorageService } from '../../service/storage';
-
 // Resources
 import './AppPg.css';
 
@@ -24,14 +21,11 @@ export class AppPg extends Component {
   constructor(props) {
     super(props);
 
-    this.apiSer = new APIService();
-    this.storageSer = new StorageService();
-
     this.state = {appConfig: {}, userProfile: null, error: null};
   };
 
   componentDidMount() {
-    this.apiSer.get('/app/config')
+    this.props.appCtx.apiSer.get('/app/config')
       .then((result) => {
         if (result.error != null) {
           this.setState({error: result.error});
@@ -39,7 +33,7 @@ export class AppPg extends Component {
           this.setState({appConfig: result.data});
         }
       });
-    const userProfile = this.storageSer.get('userProfile');
+    const userProfile = this.props.appCtx.storageSer.get('userProfile');
     if (userProfile != null) {
       this.setState({userProfile: userProfile});
     }
@@ -51,7 +45,7 @@ export class AppPg extends Component {
 
     if (userProfile == null) {
       return (
-        <LoginCmp loginCallback={this.loginCallback} />
+        <LoginCmp appCtx={this.props.appCtx} loginCallback={this.loginCallback} />
       )
     }
 
@@ -73,10 +67,10 @@ export class AppPg extends Component {
 
               <Switch>
                 <Route path="/user">
-                  <CntUserCmp userProfile={userProfile} />
+                  <CntUserCmp appCtx={this.props.appCtx} userProfile={userProfile} />
                 </Route>
                 <Route path="/">
-                  <CntHomeCmp />
+                  <CntHomeCmp appCtx={this.props.appCtx} />
                 </Route>
               </Switch> 
 
@@ -99,13 +93,13 @@ export class AppPg extends Component {
 
   loginCallback = (userProfile) => {
     this.setState({userProfile: userProfile});
-    this.storageSer.put('userProfile', userProfile);
+    this.props.appCtx.storageSer.put('userProfile', userProfile);
     window.location.href = '/';
   };
 
   logoutCallback = () => {
     this.setState({userProfile: null});
-    this.storageSer.clear();
+    this.props.appCtx.storageSer.clear();
   };
 
 };

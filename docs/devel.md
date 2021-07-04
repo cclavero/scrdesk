@@ -133,6 +133,20 @@ $ curl -vvv -X POST -H "Content-Type: application/json" -d '{"username":"admin",
 - https://mdbootstrap.com/docs/react/navigation/navbar/
 - https://stackoverflow.com/questions/31079081/programmatically-navigate-using-react-router
 
+12. ui: i18n (02-06-2021)
 
+- https://phrase.com/blog/posts/react-i18n-best-libraries/
+- https://formatjs.io/docs/getting-started/installation/
+- https://lokalise.com/blog/react-i18n-intl/
+- https://www.codeandweb.com/babeledit/tutorials/how-to-translate-your-react-app-with-react-intl
+
+$ npm i -S react-intl
+
+--- TEMPORAL
+
+- https://stackoverflow.com/questions/44635584/react-intl-how-to-switch-locale-and-messages-from-variable
+
+- https://formatjs.io/docs/react-intl/components/
+- https://github.com/formatjs/formatjs/issues/243
 
 

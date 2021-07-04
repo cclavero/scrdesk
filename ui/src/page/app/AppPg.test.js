@@ -8,7 +8,7 @@ import AppPg from './AppPg';
 test('renders learn react link', () => {
   render(<AppPg />);
 
-  // TEMPORAL
+  // TODO
   /*
   const linkElement = screen.getByText(/header/i);
   expect(linkElement).toBeInTheDocument();

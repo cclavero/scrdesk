@@ -2,15 +2,11 @@
 import React, { Component } from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn, MDBAlert } from 'mdbreact';
 
-import { APIService } from '../../service/api';
-
 // Component
 export class LoginCmp extends Component {
 
   constructor(props) {
     super(props);
-
-    this.apiSer = new APIService();
 
     this.state = {message: null, username: '', password: ''};
   };
@@ -71,7 +67,7 @@ export class LoginCmp extends Component {
       return;
     }
 
-    this.apiSer.post('/app/login', null, {username: username, password: password})
+    this.props.appCtx.apiSer.post('/app/login', null, {username: username, password: password})
       .then((result) => {
         if (result.error != null) {
           this.setState({username: '', password: '', message: 'Bad username and/or password !!'});
