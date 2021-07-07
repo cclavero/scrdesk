@@ -1,15 +1,9 @@
-# Binaries for programs and plugins
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
 
-# Test binary, built with `go test -c`
-*.test
+# Project
+/build/ui/*
+!/build/ui/.gitkeep
 
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
+/build/app/*
+!/build/app/.gitkeep
 
-# Dependency directories (remove the comment below to include it)
-# vendor/
+/app/ui
