@@ -1,5 +1,7 @@
 package config
 
+import "github.com/gin-gonic/gin"
+
 // AppConfig type
 type AppConfig struct {
 	Version     string
@@ -15,4 +17,11 @@ func InitAppConfig(version string) (*AppConfig, error) {
 		HttpPort:    "8000",
 	}
 	return appConfig, nil
+}
+
+// InitGinEngine function to init the gin webserver engine
+func InitGinEngine(appConfig *AppConfig) (*gin.Engine, error) {
+	gin.SetMode(gin.ReleaseMode)
+	ginEngine := gin.Default()
+	return ginEngine, nil
 }

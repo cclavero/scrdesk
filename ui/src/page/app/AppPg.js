@@ -8,7 +8,6 @@ import { LoginCmp } from '../../comp/login/LoginCmp';
 import { HeaderCmp } from '../../comp/header/HeaderCmp';
 import { SidebarCmp } from '../../comp/sidebar/SidebarCmp';
 import { FooterCmp } from '../../comp/footer/FooterCmp';
-
 import { CntHomeCmp } from '../../comp/content/CntHomeCmp';
 import { CntUserCmp } from '../../comp/content/CntUserCmp';
 

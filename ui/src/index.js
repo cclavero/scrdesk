@@ -1,11 +1,12 @@
 // Imports
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { IntlProvider } from 'react-intl';
 import { reportWebVitals } from './reportWebVitals';
-import { I18NService } from './service/i18n';
+
+// Components
 import { APIService } from './service/api';
 import { StorageService } from './service/storage';
+import { IntlProviderWrapper } from './comp/i18n/IntlWrapperCmp';
 
 // MDB React
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -24,10 +25,9 @@ const appCtx = initAppCtx();
 // Main
 ReactDOM.render(
   <React.StrictMode>
-    <IntlProvider defaultLocale={appCtx.i18nSer.getDefLocale()} locale={appCtx.i18nSer.getLocale()} key={appCtx.i18nSer.getLocale()}
-      messages={appCtx.i18nSer.getMessages()}>
+    <IntlProviderWrapper>
       <AppPg appCtx={appCtx} />
-    </IntlProvider>
+    </IntlProviderWrapper>
   </React.StrictMode>,
   document.getElementById('root')
 );
@@ -41,7 +41,6 @@ reportWebVitals();
 
 function initAppCtx() {
   return {
-    i18nSer: new I18NService(),
     apiSer: new APIService(),
     storageSer: new StorageService()
   };
