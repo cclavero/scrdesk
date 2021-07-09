@@ -12,7 +12,7 @@ export class CntUserCmp extends Component {
     return (
       <Fragment>
 
-        <h2>User</h2>
+        <h2>User profile</h2>
         
         {/* TEMPORAL */}
         <div><FormattedMessage id="dummy.example" /></div>

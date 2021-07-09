@@ -1,6 +1,7 @@
 // Imports
 import React, { Component } from 'react';
-import { MDBNavbar, MDBNavbarBrand, MDBNavbarToggler, MDBCollapse, MDBNavbarNav, MDBNavItem, MDBNavLink } from 'mdbreact';
+import { MDBNavbar, MDBNavbarBrand, MDBNavbarToggler, MDBCollapse, MDBNavbarNav, MDBNavItem, MDBNavLink,
+  MDBIcon, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from 'mdbreact';
 
 // Resources
 import './HeaderCmp.css';
@@ -16,25 +17,47 @@ export class HeaderCmp extends Component {
 
   render() {
     return (
-      <MDBNavbar color="elegant-color-dark" dark expand="md" scrolling fixed="top">
+      <MDBNavbar color="elegant-color-dark" dark scrolling expand="md" fixed="top" className="HeaderCmp-navbar">
 
         <MDBNavbarBrand>
-          <h1 className="font-weight-bold white-text HeaderCmp-title">ScoresDesk - ver. {this.props.appConfig.version}</h1>
+          <h1 className="font-weight-bold white-text HeaderCmp-title">ScoresDesk</h1>
         </MDBNavbarBrand>
 
         <MDBNavbarToggler onClick={() => this.toggleBurgerMenu()} />
 
         <MDBCollapse id="navbar-main" isOpen={this.state.burgerMenuOpen} navbar>
 
-          <MDBNavbarNav left>
-            <MDBNavItem active>
-              <MDBNavLink to="/">Home</MDBNavLink>
+          <MDBNavbarNav className="HeaderCmp-navbarnav" left>
+            <MDBNavItem>
+              <MDBDropdown>
+                <MDBDropdownToggle nav caret>
+                  <div className="d-none d-md-inline">Menu</div>
+                </MDBDropdownToggle>
+                <MDBDropdownMenu className="dropdown-default">
+                  <MDBDropdownItem href="#">
+                    <MDBNavLink to="/">Home</MDBNavLink>
+                  </MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
             </MDBNavItem>
-            <MDBNavItem active>
-              <MDBNavLink to="/user">User</MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem active>
-              <MDBNavLink to="#" onClick={() => this.logout()}>Logout</MDBNavLink>
+          </MDBNavbarNav>
+
+          <MDBNavbarNav className="HeaderCmp-navbarnav" right>
+
+            <div className="HeaderCmp-version">ver. {this.props.appConfig.version}</div>
+
+            <MDBNavItem>
+              <MDBDropdown>
+                <MDBDropdownToggle nav caret>
+                  <MDBIcon icon="user" />
+                </MDBDropdownToggle>
+                <MDBDropdownMenu className="dropdown-default">
+                  <MDBDropdownItem href="#" to="/user">
+                    <MDBNavLink to="/user">User profile</MDBNavLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem href="#" onClick={() => this.logout()}>Logout</MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
             </MDBNavItem>
           </MDBNavbarNav>
 

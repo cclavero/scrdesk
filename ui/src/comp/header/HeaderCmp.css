@@ -1,6 +1,62 @@
 
 /* Component styles */
 
-.HeaderCmp-title {
-    font-size: 22px;
+.HeaderCmp-navbar {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
+
+.HeaderCmp-navbarnav {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.HeaderCmp-title {
+    padding-top: 6px;
+    font-size: 20px;
+}
+
+.HeaderCmp-version {
+    margin-right: 20px;
+    padding-top: 8px;
+    font-size: 16px;
+}
+
+.HeaderCmp-navbarnav .nav-item {
+    font-size: 14px;
+}
+
+.HeaderCmp-navbarnav .nav-item i {
+    font-size: 18px;
+}
+
+.HeaderCmp-navbarnav .nav-item .dropdown-menu {
+    border-radius: 0;
+}
+
+.HeaderCmp-navbarnav .nav-item .dropdown-menu .dropdown-item {
+    margin: 0 0 0 6px 0 !important;
+    padding: 0 !important;
+
+    color: #000000 !important;
+    font-size: 14px;
+
+    border: 1px solid red !important;
+
+}
+
+.HeaderCmp-navbarnav .nav-item .dropdown-menu .dropdown-item .nav-link {
+
+    /*
+    margin: 0 6px;
+    padding: 0;
+    color: #000000;
+    font-size: 14px;
+    */
+}
+
+.HeaderCmp-navbarnav .nav-item .dropdown-menu .dropdown-item .nav-link:hover {
+    color:#000000;
+    font-weight: bold;
+}
+
