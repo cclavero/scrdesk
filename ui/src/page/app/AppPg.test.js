@@ -2,7 +2,7 @@
 import { render, screen } from '@testing-library/react';
 
 // Components
-import AppPg from './AppPg';
+import { AppPg } from './AppPg';
 
 // Tests
 test('renders learn react link', () => {

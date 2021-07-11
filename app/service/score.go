@@ -1,9 +1,13 @@
 package service
 
+import "fmt"
+
 // Score type
 type Score struct {
-	Id    int    `json:"id"`
-	Score string `json:"score"`
+	Id     int    `json:"id"`
+	Score  string `json:"score"`
+	Desc   string `json:"desc"`
+	ImgSrc string `json:"imgSrc"`
 }
 
 // Score service struct
@@ -19,12 +23,16 @@ func NewScoreSer() *ScoreSer {
 func (scoresSer *ScoreSer) GetScores() []Score {
 
 	// TODO:MOCK
-	items := []Score{
-		{Id: 1, Score: "Score 1"},
-		{Id: 2, Score: "Score 2"},
-		{Id: 3, Score: "Score 3"},
-		{Id: 4, Score: "Score 4"},
+	items := []Score{}
+	for i := 1; i < 20; i++ {
+		score := Score{
+			Id:     i,
+			Score:  fmt.Sprintf("Score %d", i),
+			Desc:   fmt.Sprintf("Description %d", i),
+			ImgSrc: fmt.Sprintf("https://mdbootstrap.com/img/Photos/Others/images/%d.jpg", i),
+		}
+		items = append(items, score)
 	}
-	return items
 
+	return items
 }

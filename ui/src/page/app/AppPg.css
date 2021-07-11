@@ -1,5 +1,12 @@
 
 /* Component styles */
 
-.AppPg {
+.AppPg-root {
+    padding-top: 48px;
+    padding-bottom: 32px;
+}
+
+.AppPg-sidebar {
+    padding: 14px 0;
+    height: calc(100% - 80px);
 }

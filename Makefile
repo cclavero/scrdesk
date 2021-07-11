@@ -15,12 +15,19 @@ go_env = $(go_path) GO111MODULE=on
 
 ## help			Print project tasks help
 help: Makefile
-	@echo "\n Project tasks:\n";
+	@echo "\n ScoresDesk project tasks:\n";
 	@sed -n 's/^##/	/p' $<;
 	@echo "\n";
 
 ##
 ## # UI tasks ---------------------------------------------------
+
+## install-ui		Install npm libs
+install-ui:
+	@echo "\n> Install npm libs\n";
+
+	cd ui && \
+		npm run clean;
 
 ## test-ui		Execute all tests for UI
 test-ui:

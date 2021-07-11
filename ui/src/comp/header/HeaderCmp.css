@@ -1,6 +1,51 @@
 
 /* Component styles */
 
+.HeaderCmp-navbar {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.HeaderCmp-navbarnav {
+    font-weight: bold;
+    color: #ffffff;
+}
+
 .HeaderCmp-title {
-    font-size: 22px;
+    padding-top: 6px;
+    font-size: 20px;
+}
+
+.HeaderCmp-version {
+    margin-right: 20px;
+    padding-top: 8px;
+    font-size: 16px;
+}
+
+.HeaderCmp-navbarnav .nav-item {
+    font-size: 14px;
+}
+
+.HeaderCmp-navbarnav .nav-item i {
+    font-size: 18px;
+}
+
+.HeaderCmp-navbarnav .nav-item .dropdown-menu {
+    border-radius: 0;
+}
+
+.HeaderCmp-navbarnav .nav-item .dropdown-menu .dropdown-item {
+    margin: 0;
+    padding: 0;
+}
+
+.HeaderCmp-link a {
+    margin: 0 !important;
+    padding: 0 6px !important;
+    color: #000000 !important;
+    font-size: 14px !important;
+}
+
+.HeaderCmp-link a:hover {
+    background-color: #ffffff;
 }

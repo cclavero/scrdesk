@@ -7,12 +7,13 @@ import { IntlCtx } from './IntlWrapperCmp';
 // Component
 export const LanguageSwitchCmp = () => {
 
-  const { locale, changeLanguage } = React.useContext(IntlCtx);
+  const { locale, getLanguageMap, changeLanguage } = React.useContext(IntlCtx);
 
   return(
     <select name="locale" value={locale} onChange={(ev) => changeLanguage(ev.target.value)} className="browser-default custom-select">
-      <option value="en">English</option>
-      <option value="ca">Catalan</option>
+      {getLanguageMap().map(item => (
+      <option value={item.id}>{item.name}</option>
+      ))}
     </select>
   );
-};
+}

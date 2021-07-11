@@ -1,0 +1,11 @@
+
+/* Component styles */
+
+.CntTitleCmp-title {
+    margin: 14px 0;
+    padding: 4px 12px;
+    color: #ffffff;
+    background-color: #263238;
+    font-size: 16px;
+    font-weight: bold;
+}
