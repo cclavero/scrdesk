@@ -4,7 +4,7 @@ import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // Components
-import { LoginCmp } from '../../comp/login/LoginCmp';
+import LoginCmp from '../../comp/login/LoginCmp';
 import { HeaderCmp } from '../../comp/header/HeaderCmp';
 import { SidebarCmp } from '../../comp/sidebar/SidebarCmp';
 import { FooterCmp } from '../../comp/footer/FooterCmp';
@@ -54,16 +54,18 @@ export class AppPg extends Component {
         <MDBContainer fluid>
 
           <MDBRow>
-            <MDBCol size="12">
+            <MDBCol>
               <HeaderCmp appConfig={appConfig} logoutCallback={this.logoutCallback} />
             </MDBCol>  
           </MDBRow>
-          <MDBRow style={{paddingTop: "80px",paddingBottom: "40px"}}>
-            <MDBCol size="2">
+
+          <MDBRow className="AppPg-root">
+
+            <MDBCol size="2" className="position-fixed d-inline-block overflow-auto special-color-dark AppPg-sidebar">
               <SidebarCmp />
             </MDBCol>
-            <MDBCol size="10">
 
+            <MDBCol className="offset-2 d-inline-block">
               <Switch>
                 <Route path="/user">
                   <CntUserCmp appCtx={this.props.appCtx} userProfile={userProfile} />
@@ -72,12 +74,12 @@ export class AppPg extends Component {
                   <CntHomeCmp appCtx={this.props.appCtx} />
                 </Route>
               </Switch> 
-
             </MDBCol>
+
           </MDBRow>
-            
+        
           <MDBRow>
-            <MDBCol size="12">
+            <MDBCol>
               <FooterCmp />
             </MDBCol>
           </MDBRow>
@@ -101,4 +103,4 @@ export class AppPg extends Component {
     this.props.appCtx.storageSer.clear();
   };
 
-};
+}

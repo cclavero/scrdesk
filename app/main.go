@@ -5,7 +5,6 @@ import (
 
 	"github.com/cclavero/scrdesk/app/api"
 	"github.com/cclavero/scrdesk/app/config"
-	"github.com/gin-gonic/contrib/static"
 	"github.com/gin-gonic/gin"
 )
 
@@ -30,16 +29,13 @@ func main() {
 		panic(err)
 	}
 
-	// Log
-	fmt.Printf("\n\nScrdesk app: ver. %s\n\n", appConfig.Version)
-
-	// Init webserver static resources
-	ginEngine.Use(static.Serve("/", static.LocalFile(appConfig.UIFilesPath, true)))
-
 	// Init API
 	if err = api.Init(appConfig, ginEngine); err != nil {
 		panic(err)
 	}
+
+	// Log
+	fmt.Printf("\n\nScrdesk app: ver. %s\n\n", appConfig.Version)
 
 	// Start webserver
 	if err = api.Start(ginEngine); err != nil {

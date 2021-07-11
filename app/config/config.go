@@ -1,6 +1,9 @@
 package config
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/contrib/static"
+	"github.com/gin-gonic/gin"
+)
 
 // AppConfig type
 type AppConfig struct {
@@ -23,5 +26,14 @@ func InitAppConfig(version string) (*AppConfig, error) {
 func InitGinEngine(appConfig *AppConfig) (*gin.Engine, error) {
 	gin.SetMode(gin.ReleaseMode)
 	ginEngine := gin.Default()
+
+	// Init webserver static resources
+	ginEngine.Use(static.Serve("/", static.LocalFile(appConfig.UIFilesPath, true)))
+
+	// Webserver Not Found error
+	ginEngine.NoRoute(func(ctx *gin.Context) {
+		ctx.Redirect(301, "/")
+	})
+
 	return ginEngine, nil
 }

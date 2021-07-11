@@ -1,9 +1,10 @@
 // Imports
 import React, { Component } from 'react';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn, MDBAlert } from 'mdbreact';
 
 // Component
-export class LoginCmp extends Component {
+class LoginCmp extends Component {
 
   constructor(props) {
     super(props);
@@ -13,6 +14,7 @@ export class LoginCmp extends Component {
 
   render() {
 
+    const { formatMessage } = this.props.intl;
     const { message } = this.state;
 
     return (
@@ -22,7 +24,7 @@ export class LoginCmp extends Component {
             <MDBCard>
               <div className="header pt-3 grey lighten-2">
                 <MDBRow className="d-flex justify-content-start">
-                  <h3 className="deep-grey-text mt-3 mb-4 pb-1 mx-5">ScoresDesk: Login</h3>
+                  <h3 className="deep-grey-text mt-3 mb-4 pb-1 mx-5">ScoresDesk: <FormattedMessage id="cnt.login.title" /></h3>
                 </MDBRow>
               </div>
               <MDBCardBody className="mx-4 mt-4">
@@ -33,12 +35,12 @@ export class LoginCmp extends Component {
                 }
 
                 <form onSubmit={(ev) => this.onFormSubmit(ev)}>
-                  <MDBInput label="Username" icon="user" group type="text" value={this.state.username}
+                  <MDBInput label={formatMessage({id: 'lbl.username'})} icon="user" group type="text" value={this.state.username}
                     getValue={(value) => this.registerFormData("username", value)} />
-                  <MDBInput label="Password" icon="lock" group type="password" value={this.state.password}
+                  <MDBInput label={formatMessage({id: 'lbl.password'})} icon="lock" group type="password" value={this.state.password}
                     getValue={(value) => this.registerFormData("password", value)} />
                   <div className="text-center">
-                    <MDBBtn type="submit" color="primary">Submit</MDBBtn>
+                    <MDBBtn type="submit" color="primary"><FormattedMessage id="btn.submit" /></MDBBtn>
                   </div>
                 </form>
               </MDBCardBody>
@@ -53,7 +55,7 @@ export class LoginCmp extends Component {
 
   registerFormData = (field, value) => {
     this.setState({[field]: value});
-  }  
+  };
 
   onFormSubmit = (ev) => {
     ev.preventDefault();
@@ -78,3 +80,5 @@ export class LoginCmp extends Component {
   };
 
 }
+
+export default injectIntl(LoginCmp);

@@ -1,5 +1,6 @@
 // Imports
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarToggler, MDBCollapse, MDBNavbarNav, MDBNavItem, MDBNavLink,
   MDBIcon, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from 'mdbreact';
 
@@ -31,11 +32,11 @@ export class HeaderCmp extends Component {
             <MDBNavItem>
               <MDBDropdown>
                 <MDBDropdownToggle nav caret>
-                  <div className="d-none d-md-inline">Menu</div>
+                  <div className="d-none d-md-inline"><FormattedMessage id="men.main.menu" /></div>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default">
-                  <MDBDropdownItem href="#">
-                    <MDBNavLink to="/">Home</MDBNavLink>
+                  <MDBDropdownItem className="HeaderCmp-link">
+                    <MDBNavLink to="/"><FormattedMessage id="men.main.home" /></MDBNavLink>
                   </MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
@@ -52,10 +53,12 @@ export class HeaderCmp extends Component {
                   <MDBIcon icon="user" />
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default">
-                  <MDBDropdownItem href="#" to="/user">
-                    <MDBNavLink to="/user">User profile</MDBNavLink>
+                  <MDBDropdownItem className="HeaderCmp-link">
+                    <MDBNavLink to="/user"><FormattedMessage id="men.sec.userProfile" /></MDBNavLink>
                   </MDBDropdownItem>
-                  <MDBDropdownItem href="#" onClick={() => this.logout()}>Logout</MDBDropdownItem>
+                  <MDBDropdownItem onClick={() => this.logout()} className="HeaderCmp-link">
+                    <a href="#!" className="nav-link"><FormattedMessage id="men.sec.logout" /></a>
+                  </MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
@@ -76,5 +79,4 @@ export class HeaderCmp extends Component {
   logout = () => {
     this.props.logoutCallback();
   };
-
 }

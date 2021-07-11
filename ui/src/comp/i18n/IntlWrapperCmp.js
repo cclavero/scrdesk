@@ -17,14 +17,14 @@ export class IntlProviderWrapper extends Component {
 
     // Internal vars
     this.defLocale = 'en';
-    this.messagesMap = {
-      'en': English,
-      'ca': Catalan
+    this.localeMap = {
+      en: {name: 'English', messages: English},
+      ca: {name: 'Catalan', messages: Catalan}  
     };
-
+    
     // Methods
     this.checkLocale = (locale) => {
-      if (!(locale in this.messagesMap)) { // Set default locale
+      if (!(locale in this.localeMap)) { // Set default locale
         locale = this.defLocale;
       }
       return locale;
@@ -35,9 +35,17 @@ export class IntlProviderWrapper extends Component {
       return this.checkLocale(browserLocale);
     };
 
+    this.getLanguageMap = () => {
+      const langMap = [];
+      for (const id in this.localeMap) {
+        langMap.push({id: id, name: this.localeMap[id].name});
+      }
+      return langMap;
+    };
+
     this.changeLanguage = (locale) => {
       locale = this.checkLocale(locale);
-      this.setState({locale: locale, messages: this.messagesMap[locale]});
+      this.setState({locale: locale, messages: this.localeMap[locale].messages});
       const htmlTag = document.getElementsByTagName('html')[0];
       if (htmlTag != null) {
           htmlTag.setAttribute('lang', locale);
@@ -46,7 +54,8 @@ export class IntlProviderWrapper extends Component {
     
     // Note: Pass everything in state to avoid creating object inside render method (like explained in the documentation)
     const browserLocale = this.getBrowserLanguage();
-    this.state = {locale: browserLocale, messages: this.messagesMap[browserLocale], changeLanguage: this.changeLanguage};
+    this.state = {locale: browserLocale, messages: this.localeMap[browserLocale].messages, 
+      getLanguageMap: this.getLanguageMap, changeLanguage: this.changeLanguage};
   };
 
   render() {
@@ -62,4 +71,5 @@ export class IntlProviderWrapper extends Component {
       </IntlCtx.Provider>
     );
   };
+  
 }

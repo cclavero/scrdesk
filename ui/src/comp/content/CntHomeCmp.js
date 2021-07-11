@@ -1,7 +1,10 @@
 // Imports
-import React, { Component, Fragment } from 'react';
-import { MDBAlert, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdbreact';
-import { FormattedMessage } from 'react-intl';
+import React, { Component } from 'react';
+import { MDBContainer, MDBRow, MDBCol, MDBAlert, MDBBtn, MDBCard, MDBCardImage, MDBCardBody, 
+  MDBCardTitle, MDBCardText } from 'mdbreact';
+
+// Components
+import { CntTitleCmp } from './CntTitleCmp';
 
 // Component
 export class CntHomeCmp extends Component {
@@ -12,56 +15,7 @@ export class CntHomeCmp extends Component {
     this.state = {data: [], error: null};
   };
 
-  render() {
-
-    const { data, error } = this.state;
-
-    return (
-      <Fragment>
-
-        <h2><FormattedMessage id="cnt.home.title" /></h2>
-
-        {error != null
-          ? <MDBAlert color="danger" dismiss><strong>{error}</strong></MDBAlert>
-          : <div></div>
-        }
-
-        <MDBBtn onClick={() => this.getScores()} color="primary">
-          <FormattedMessage id="btn.getScores" />
-        </MDBBtn>
-
-        <MDBTable>
-          <MDBTableHead>
-            <tr>
-              <th>#</th>
-              <th><FormattedMessage id="tbl.score.title" /></th>
-            </tr>
-          </MDBTableHead>
-          <MDBTableBody>
-          {data.map(item => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.score}</td>
-            </tr>
-          ))}
-          </MDBTableBody>
-        </MDBTable>
-
-        {/* TEMPORAL */}
-        <FormattedMessage id="dummy.lorem" values={{
-          p: chunks => <p>{chunks}</p>
-        }} />
-        
-      </Fragment>
-    );
-  };
-
-  // Internal methods ----------------------------------------------------------------
-
-  getScores = () => {
-
-    this.setState({data: [], error: null});
-
+  componentDidMount() {
     this.props.appCtx.apiSer.get('/api/score')
       .then((result) => {
         if (result.error != null) {
@@ -70,7 +24,49 @@ export class CntHomeCmp extends Component {
           this.setState({data: result.data});
         }
       });
+  };
 
+  render() {
+
+    const { data, error } = this.state;
+
+    return (
+      <MDBContainer fluid>
+
+        <MDBRow>
+          <MDBCol>
+            <CntTitleCmp title="cnt.home.title" />
+          </MDBCol>
+        </MDBRow>
+
+        <MDBRow>
+          <MDBCol>
+            {error != null
+              ? <MDBAlert color="danger" dismiss><strong>{error}</strong></MDBAlert>
+              : <div></div>
+            }
+          </MDBCol>
+        </MDBRow>
+
+        <MDBRow>
+          {data.map(item => (
+          <MDBCol size="3">
+            <MDBCard>
+              <MDBCardImage className="img-fluid" src={item.imgSrc} />
+              <MDBCardBody>
+                <MDBCardTitle>{item.score}</MDBCardTitle>
+                <MDBCardText>
+                  <p>ID: {item.id}</p>
+                  <p>Description: {item.desc}</p></MDBCardText>
+                <MDBBtn href="#">Action</MDBBtn>
+              </MDBCardBody>
+            </MDBCard>
+          </MDBCol>
+          ))}
+        </MDBRow>        
+        
+      </MDBContainer>
+    );
   };
 
 }

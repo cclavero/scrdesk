@@ -39,6 +39,7 @@ export class APIService {
     get = (url, urlParams) => {
 
         // TODO: URL PARAMS
+        console.log('URL Params: ' + urlParams);
 
         return this.invoke(url, this.getInvConfig('GET'));
     };
@@ -46,6 +47,7 @@ export class APIService {
     post = (url, urlParams, data) => {
 
         // TODO: URL PARAMS
+        console.log('URL Params: ' + urlParams);
 
         return this.invoke(url, this.getInvConfig('POST', data))
     };

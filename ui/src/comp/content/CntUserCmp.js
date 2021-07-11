@@ -1,8 +1,9 @@
 // Imports
-import React, { Component, Fragment } from 'react';
-import { FormattedMessage } from 'react-intl';
+import React, { Component } from 'react';
+import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 
 // Components
+import { CntTitleCmp } from './CntTitleCmp';
 import { LanguageSwitchCmp } from '../i18n/LanguageSwitchCmp';
 
 // Component
@@ -10,17 +11,23 @@ export class CntUserCmp extends Component {
 
   render() {
     return (
-      <Fragment>
+      <MDBContainer fluid>
 
-        <h2>User profile</h2>
-        
-        {/* TEMPORAL */}
-        <div><FormattedMessage id="dummy.example" /></div>
+        <MDBRow>
+          <MDBCol>
+            <CntTitleCmp title="cnt.user.title" />
+          </MDBCol>
+        </MDBRow>
 
-        <div>Name: {this.props.userProfile.name}</div>
-        <div>Token: {this.props.userProfile.token}</div>
-        <div>Language: <LanguageSwitchCmp /></div>
-      </Fragment>  
+        <MDBRow>
+          <MDBCol>
+            <div>Name: {this.props.userProfile.name}</div>
+            <div>Token: {this.props.userProfile.token}</div>
+            <div>Language: <LanguageSwitchCmp /></div>
+          </MDBCol>
+        </MDBRow>  
+
+      </MDBContainer>  
     );
   };
 

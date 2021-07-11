@@ -13,7 +13,7 @@ export class StorageService {
         return null;
     };
 
-    clear = (id, obj) => {
+    clear = () => {
         sessionStorage.clear();
     };
 
